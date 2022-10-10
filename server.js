@@ -1,15 +1,17 @@
 const express = require('express')
 const cors = require('cors')
+const { io, app } = require('./initWS')
+const { socketEvents } = require('./socketEvents')
 
-const server = express()
-server.use(cors())
-server.use(express.json());
+app.use(cors())
+app.use(express.json());
 
 const usersRoutes = require('./routes/users')
 
-server.get('/', (req, res) => res.send('Welcome to TRIVIA RANGERS'))
+app.get('/', (req, res) => res.send('Welcome to TRIVIA RANGERS'))
 
-server.use('/users', usersRoutes)
+app.use('/users', usersRoutes)
 
+io.on("connection", socket => socketEvents(socket))
 
-module.exports = server
+module.exports = app
