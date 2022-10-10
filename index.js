@@ -1,7 +1,7 @@
 const dotenv = require('dotenv')
 dotenv.config()
 
-const { server } = require('./initWS');
+const { server } = require('./server');
 
 const port = process.env.PORT || 3000;
 

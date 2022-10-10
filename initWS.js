@@ -4,4 +4,4 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require("socket.io")(server);
 
-module.exports = { server, io, app };
+module.exports = { io, app, server };

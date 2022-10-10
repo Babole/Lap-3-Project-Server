@@ -1,4 +1,4 @@
-const { io } = require('../initServer');
+const { io } = require('../initWS');
 
 function socketEvents(socket) {
     console.log('connected');
