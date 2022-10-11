@@ -1,5 +1,5 @@
 class GameState {
-    constructor(host, roomId, questions, answers, correctAnswers) {
+    constructor(roomId, host, questions, answers, correctAnswers) {
         this.roomId = roomId;
         this.host = host
         this.users = [
