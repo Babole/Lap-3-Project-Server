@@ -25,12 +25,8 @@ function initialise(socket){
     })
     
     socket.on('update player score', ({roomId, user, score}) => {
-        socket.to(roomId).emit('update opponents score', {user, score});
+        io.to(roomId).emit('update score', {user, score});
         console.log(`updating score of ${user} in room: ${roomId} with a score of ${score}`);
-    })
-
-    socket.on('complete quiz', ({roomId, user}) => {
-        io.to(roomId).emit('update opponent completion', user)
     })
 }
 

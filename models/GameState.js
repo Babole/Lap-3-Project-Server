@@ -9,7 +9,7 @@ class GameState {
                 hasCompletedRound: false
             }
         ];
-        this.questionNumber = 1;
+        this.questionNumber = 0;
         this.questions = questions;
         this.answers = answers
         this.correctAnswers = correctAnswers
