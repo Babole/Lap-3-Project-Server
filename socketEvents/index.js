@@ -7,9 +7,9 @@ function initialise(socket){
 
     socket.on('disconnect', () => console.log('user disconnected'));
 
-    socket.on('create game', ({ roomId, host, questions, answers, correctAnswers }) => {
+    socket.on('create game', ({ roomId, host, questions, answers, correctAnswers, category, difficulty }) => {
         console.log(`game created with the code ${roomId}`);
-        const state = new GameState(roomId, host, questions, answers, correctAnswers);
+        const state = new GameState(roomId, host, questions, answers, correctAnswers, category, difficulty);
         socket.join(roomId);
         io.to(roomId).emit('change state', state); //this sends to everyone in room including sender
     })

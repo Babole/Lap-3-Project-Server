@@ -1,5 +1,5 @@
 class GameState {
-    constructor(roomId, host, questions, answers, correctAnswers) {
+    constructor(roomId, host, questions, answers, correctAnswers, category, difficulty) {
         this.roomId = roomId;
         this.host = host
         this.users = [
@@ -15,6 +15,8 @@ class GameState {
         this.correctAnswers = correctAnswers
         this.isGameStarted = false;
         this.isGameFinished = false
+        this.category = category
+        this.difficulty = difficulty
     }
 }
 
