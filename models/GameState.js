@@ -6,7 +6,7 @@ class GameState {
             {
                 name: host,
                 score: 0,
-                hasCompletedQuiz: false
+                hasCompletedRound: false
             }
         ];
         this.questionNumber = 1;
@@ -14,6 +14,7 @@ class GameState {
         this.answers = answers
         this.correctAnswers = correctAnswers
         this.isGameStarted = false;
+        this.isGameFinished = false
     }
 }
 
