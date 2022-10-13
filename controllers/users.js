@@ -45,4 +45,24 @@ async function showByUsername (req, res) {
     }
 }
 
-module.exports = { index, create, showByUsername }
+async function updateUserWins (req, res) {
+    try {
+        await User.updateUserWins(req.body)
+        res.status(200).json({ 
+            msg: 'User wins updated'
+         })
+    } catch (err) {
+        res.status(500).json({ err })
+    }
+}
+
+async function showWins (req, res) {
+    try {
+        const users = await User.getAllUserWins;
+        res.status(200).json(users)
+    } catch (error) {
+        res.status(500).json({ err })
+    }
+}
+
+module.exports = { index, create, showByUsername, updateUserWins, showWins }

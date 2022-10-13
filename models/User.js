@@ -5,6 +5,7 @@ module.exports = class User {
         this.id = data.id
         this.name = data.name
         this.password = data.password
+        this.win = data.win
     };
 
     static get all(){ 
@@ -41,6 +42,29 @@ module.exports = class User {
             }
 
         });
+    }
+
+    static updateUserWins(data) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let update = await db.query(`UPDATE users SET wins = $1 WHERE name = $2 RETURNING *;`, [ data.wins, data.name ])
+                let user = new User(update.rows[0])
+                resolve(user)
+            } catch (err) {
+                reject(`Error updating user ${err}`)
+            }
+        })
+    }
+
+    static getAllUserWins() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let getWins = await db.query('SELECT name, wins FROM users;')
+                resolve(getWins)
+            } catch (error) {
+                reject(`Error retrieving wins`)
+            }
+        })
     }
 
 }
