@@ -5,7 +5,16 @@ const { GameState } = require('../models/GameState')
 function initialise(socket){
     console.log('user connected');
 
-    socket.on('disconnect', () => console.log('user disconnected'));
+    socket.on('disconnect', () => {
+        console.log('user disconnected')
+    });
+
+    socket.on('disconnecting', () => {
+        const socketRooms = [...socket.rooms].slice(1, )
+        console.log('user disconnecting from ...')
+        console.log(socketRooms)
+        io.to(socketRooms[socketRooms.length - 1]).emit('user disconnected from room')
+    });
 
     socket.on('create game', ({ roomId, host, questions, answers, correctAnswers, category, difficulty }) => {
         console.log(`game created with the code ${roomId}`);
