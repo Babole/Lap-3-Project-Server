@@ -47,7 +47,7 @@ async function showByUsername (req, res) {
 
 async function updateUserWins (req, res) {
     try {
-        await User.updateUserWins(req.body)
+        await User.updateUserWins(req.body.name)
         res.status(200).json({ 
             msg: 'User wins updated'
          })
@@ -58,7 +58,7 @@ async function updateUserWins (req, res) {
 
 async function showWins (req, res) {
     try {
-        const users = await User.getAllUserWins;
+        const users = await User.getAllUserWins();
         res.status(200).json(users)
     } catch (error) {
         res.status(500).json({ err })
