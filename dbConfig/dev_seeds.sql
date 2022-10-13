@@ -1,3 +1,3 @@
-INSERT INTO users (name, password)
+INSERT INTO users (name, password, wins)
 VALUES
-('example1','examplepass');
+('example1','examplepass', 2);
